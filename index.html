@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TopPay — демо платежи на телефон</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="sim-ad">
+      <div class="sim-text">
+        <strong>SIM‑Card SPECIAL:</strong> подключай тарифы от 50₴/мес — подключение за 0₽!
+      </div>
+      <button id="simCTA" class="btn small">Узнать</button>
+    </div>
+
+    <div class="brand">
+      <h1>TopPay</h1>
+      <p class="tag">Отправляй деньги на любой телефон — DEMO</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Сделать платёж на телефон</h2>
+      <p class="lead">Выбери страну, введи номер и сумму. Мы покажем имитацию отправки.</p>
+
+      <form id="payForm" class="form">
+        <label>
+          Страна
+          <select id="country">
+            <!-- список включает популярные страны — легко добавить свои -->
+            <option value="US">United States (+1)</option>
+            <option value="GB">United Kingdom (+44)</option>
+            <option value="RU">Russia (+7)</option>
+            <option value="UA">Ukraine (+380)</option>
+            <option value="IN">India (+91)</option>
+            <option value="DE">Germany (+49)</option>
+            <option value="BR">Brazil (+55)</option>
+            <option value="CN">China (+86)</option>
+            <option value="FR">France (+33)</option>
+            <option value="PL">Poland (+48)</option>
+          </select>
+        </label>
+
+        <label>
+          Номер телефона (без кода)
+          <input id="phone" type="tel" inputmode="numeric" placeholder="Например: 501234567" required />
+        </label>
+
+        <label>
+          Валюта
+          <select id="currency">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="UAH">UAH</option>
+            <option value="RUB">RUB</option>
+            <option value="INR">INR</option>
+            <option value="BRL">BRL</option>
+          </select>
+        </label>
+
+        <label>
+          Сумма
+          <input id="amount" type="number" min="1" step="0.01" placeholder="Например: 5.00" required />
+        </label>
+
+        <div class="actions">
+          <button id="payBtn" class="btn primary" type="submit">Сделать платёж</button>
+          <button id="demoFill" class="btn ghost" type="button">Заполнить демо</button>
+        </div>
+
+        <div id="formMsg" class="form-msg" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <h3>Любая страна</h3>
+        <p>Список стран можно расширить — показываем и подставляем международный код.</p>
+      </div>
+      <div class="feature">
+        <h3>Красиво и ярко</h3>
+        <p>Современный минималистичный дизайн с акцентными цветами.</p>
+      </div>
+      <div class="feature">
+        <h3>Реклама сверху</h3>
+        <p>Баннер SIM‑карты показывает промо — нажми «Узнать» для примера.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal — имитация отправки -->
+  <div id="resultModal" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card">
+      <button class="close" id="closeResult" aria-label="Закрыть">✕</button>
+      <div id="resultContent">
+        <!-- Заполняется динамически -->
+      </div>
+      <div class="modal-actions">
+        <button id="okBtn" class="btn primary">ОК</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <small>TopPay — демо. Для реальных платежей подключай платёжный шлюз (Stripe, PayPal, Adyen и т.д.).</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
